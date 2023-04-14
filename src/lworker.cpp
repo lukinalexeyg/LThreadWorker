@@ -1,8 +1,8 @@
-#include "lthreadworker.h"
+#include "lworker.h"
 
 
 
-LThreadWorker::LThreadWorker(QObject *parent)
+LWorker::LWorker(QObject *parent)
     : m_parent{parent},
       m_thread{nullptr},
       m_autoDelete(false)
@@ -11,14 +11,14 @@ LThreadWorker::LThreadWorker(QObject *parent)
 
 
 
-bool LThreadWorker::isThreadRunning() const
+bool LWorker::isThreadRunning() const
 {
     return m_thread != nullptr && m_thread->isRunning();
 }
 
 
 
-void LThreadWorker::startThread(const QString &name)
+void LWorker::startThread(const QString &name)
 {
     if (m_thread == nullptr)
         m_thread = new QThread(m_parent);
@@ -41,7 +41,7 @@ void LThreadWorker::startThread(const QString &name)
 
 
 
-void LThreadWorker::stopThread()
+void LWorker::stopThread()
 {
     if (m_thread == nullptr)
         return;
@@ -52,7 +52,7 @@ void LThreadWorker::stopThread()
 
 
 
-void LThreadWorker::terminateThread()
+void LWorker::terminateThread()
 {
     if (m_thread == nullptr)
         return;

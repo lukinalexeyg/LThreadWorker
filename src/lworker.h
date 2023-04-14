@@ -1,14 +1,14 @@
-#ifndef THREADWORKER_H
-#define THREADWORKER_H
+#ifndef LWORKER_H
+#define LWORKER_H
 
 #include <QThread>
 
-class LThreadWorker : public QObject
+class LWorker : public QObject
 {
     Q_OBJECT
 
 public:
-    explicit LThreadWorker(QObject *parent);
+    explicit LWorker(QObject *parent);
 
     bool autoDelete() const { return m_autoDelete; }
 
@@ -36,4 +36,4 @@ private:
     QAtomicInt m_autoDelete;
 };
 
-#endif // THREADWORKER_H
+#endif // LWORKER_H
